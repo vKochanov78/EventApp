@@ -1,0 +1,39 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<!-- Title of the Page -->
+<h2>Current Events</h2>
+
+<!-- The Main Content for the Dashboard Event section -->
+<section id="dashboard">
+
+    {% if not events %}
+    <h4>There are no Events in the Dashboard!</h4>
+
+    {% else %}
+    <!-- Dashboard Page -->
+    <div class="event">
+        {% for event in events %}
+        <!-- Event Image -->
+        <img src="{{ event.event_image }}" alt="{{ event.event_name }}"/>
+
+        <!-- Event Name -->
+        <div class="event-details">
+            <p class="title">
+                {{ event.event_name }}
+            </p>
+
+            <!-- Event Date -->
+            <p class="date">{{ event.date }}</p>
+        </div>
+
+        <!-- Details Button -->
+        <a class="details-btn" href="{% url 'event_details' event.id %}">Details</a>
+    </div>
+        {% endfor %}
+
+
+</section>
+    {% endif %}
+<!-- End Dashboard Event section -->
+{% endblock %}

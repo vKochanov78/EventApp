@@ -1,0 +1,26 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+<!-- The Main Content for the Edit Profile section -->
+<section id="edit">
+    <div class="form">
+        <!-- Title of the Page -->
+        <h2>Edit Profile</h2>
+
+        <!-- Edit Profile Form -->
+        <form action="{% url 'profile_edit' %}" class="edit-form" method="post">
+
+            {% csrf_token %}
+            {{ form }}
+            {% for field in form.fields %}
+                {{ field }}
+            {% endfor %}
+            <!-- Edit Button -->
+            <input class="btn submit" type="submit" value="Edit">
+
+        </form>
+        <!-- End Edit Profile Form -->
+    </div>
+</section>
+<!-- End Edit Profile section -->
+{% endblock %}
